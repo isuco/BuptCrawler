@@ -1,0 +1,127 @@
+{
+    "Name": [
+        "公司全称",
+        "公司名称"
+    ],
+    "Abbr": [
+        "简称"
+    ],
+    "Registered_Capital": [
+        "注册资本"
+    ],
+    "Founding_Date": [
+        "成立日期",
+        "公司成立日期"
+    ],
+    "Unified_Credit_Code": [
+        "统一社会信用代码"
+    ],
+    "Taxpayer_ID": [
+        "纳税人识别号"
+    ],
+    "Company_Type": [
+        "公司类型"
+    ],
+    "Approved_Date": [
+        "核准日期"
+    ],
+    "Business_Term": [
+        "营业期限"
+    ],
+    "Employees": [
+        "人员规模",
+        "员工人数"
+    ],
+    "Former_Name": [
+        "曾用名",
+        "上市曾用名"
+    ],
+    "Registered_Address": [
+        "注册地址"
+    ],
+    "domicile": [
+        "注册地"
+    ],
+    "Office_Address": [
+        "办公地址"
+    ],
+    "Contributed_Capital": [
+        "实缴资本"
+    ],
+    "Management_Forms": [
+        "经营状态"
+    ],
+    "Business_Registration": [
+        "工商注册号",
+        "工商登记"
+    ],
+    "Organization_Code": [
+        "组织机构代码"
+    ],
+    "Industry": [
+        "行业",
+        "所属行业"
+    ],
+    "Business": [
+        "经营范围",
+        "主营业务"
+    ],
+    "Registration_Authority": [
+        "登记机关"
+    ],
+    "Taxpayer_Qualification": [
+        "纳税人资质"
+    ],
+    "Contributors": [
+        "参保人数"
+    ],
+    "Eng_Name": [
+        "英文名称"
+    ],
+    "Chairman": [
+        "董事长"
+    ],
+    "Web": [
+        "公司网址"
+    ],
+    "Secretary": [
+        "公司秘书",
+        "董秘"
+    ],
+    "Balance_Sheet_Date": [
+        "年结日"
+    ],
+    "E-MAIL": [
+        "E-MAIL"
+    ],
+    "Telephone": [
+        "联系电话"
+    ],
+    "Fax": [
+        "传真"
+    ],
+    "Auditor": [
+        "核数师"
+    ],
+    "Introduction": [
+        "公司介绍"
+    ],
+    "Legal_Representative": [
+        "法定代表人"
+    ],
+    "Controlling_Shareholder": [
+        "控股股东"
+    ],
+    "Ultimate_Controller": [
+        "最终控制人"
+    ],
+    "General_Manager": [
+        "总经理"
+    ],
+    "Management_Staffs": [
+        "管理人员人数"
+    ],
+    "Actual_Controller": [
+        "实际控制人"
+    ]
+}
