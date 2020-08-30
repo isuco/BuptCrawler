@@ -133,9 +133,9 @@ def getComByName(com_name):
         #公司详情页面跳转
         info_href = com_info.select('.content .header')[0].a['href']
         soup=HttpResponse(info_href)
-        infoblocks=soup.body.select('.mt74 .container.-top .company-warp.-public .detail-list .block-data-group')[0].select(
+        infoblocks=soup.body.select('.mt74 .container.-top .company-warp.-public .detail-list')[0].select(
             '.block-data')
-        for datagroup in infoblocks[1:]:
+        for datagroup in infoblocks:
             if 'tyc-event-ch' in datagroup.attrs:
                 if 'CompangyDetail.gongshangxinxin' in datagroup['tyc-event-ch']:
                     com_detail_info=dict(com_detail_info,**ProcessBackGroundDataGroup(datagroup))
@@ -192,7 +192,7 @@ if __name__ == '__main__':
             promap[value]=item[0]
     comdatas=orgdatas['datas']
     comdatas_json={}
-    for name in compnames[len(comdatas):]:
+    for name in compnames[len(comdatas)]:
         print(name)
         comdata,comproperty={},{}
         comdata['label']='Organization'
