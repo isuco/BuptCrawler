@@ -11,6 +11,7 @@ import json
 import cookies as ck
 import random
 import copy
+import os
 
 def DelHtml(htmlString):
     pre = re.compile('<[^>]+>')
@@ -149,13 +150,28 @@ def getComByName(com_name):
         print('error')
         return com_detail_info,com_relative_per,-1
 
-def reviseData(datas,compnames,propertyMap):
+def reviseData():
+    with open('org_names.json','r',encoding='utf-8') as f:
+        compnames=json.load(f)
+
+    with open('PropertyMap.json','r',encoding='utf-8') as f:
+        propertymap=json.load(f)
+    with open('org_datas.json','r',encoding='utf-8') as f:
+        orgdatas=json.load(f)
+        print()
+    comdatas = orgdatas['datas']
     datas_revised=[]
-    for i in range(len(datas)):
-        data=datas[i]
+    for i in range(len(comdatas)):
+        data=comdatas[i]
         r_data=copy.deepcopy(data)
         r_data['original_id']=compnames[i]
-        r_data['property']['Domcile']
+        r_data['property']['Domicile']=r_data['domicile']
+        for key in r_data['property'].keys():
+            if r_data[key]=='-':
+                r_data[key]='--'
+    orgdatas['datas'] = datas_revised
+    with open('org_datas.json', 'w', encoding='utf-8') as f:
+        json.dump(orgdatas, f, ensure_ascii=False)
 
 
 if __name__ == '__main__':
@@ -165,35 +181,37 @@ if __name__ == '__main__':
     with open('PropertyMap.json','r',encoding='utf-8') as f:
         propertymap=json.load(f)
     #已完成爬取数据
-    with open('org_datas.json','r',encoding='utf-8') as f:
-        orgdatas=json.load(f)
-        print()
-
+    if not os.path.exists('org_datas.json'):
+        orgdatas={"datas":[]}
+    else:
+        with open('org_datas.json','r',encoding='utf-8') as f:
+            orgdatas=json.load(f)
     promap={}
     for item in propertymap.items():
         for value in item[1]:
             promap[value]=item[0]
     comdatas=orgdatas['datas']
-    # comdatas_json={}
-    # for name in compnames[len(comdatas):]:
-    #     print(name)
-    #     comdata,comproperty={},{}
-    #     comdata['label']='Organization'
-    #     com_detail_info,com_relative_per,tag = getComByName(name)
-    #     if tag==-1:
-    #         break
-    #     for key in com_detail_info.keys():
-    #         if key in promap.keys():
-    #             comproperty[promap[key]]=com_detail_info[key]
-    #     comdata['property']=comproperty
-    #     comdatas.append(comdata)
-    # for comdata in comdatas:
-    #     for key in propertymap:
-    #         property=comdata['property']
-    #         if key not in property:
-    #                 property[key]="--"
-    # comdatas_json['datas']=comdatas
-    # orgdatas['datas']=comdatas
+    comdatas_json={}
+    for name in compnames[len(comdatas):]:
+        print(name)
+        comdata,comproperty={},{}
+        comdata['label']='Organization'
+        com_detail_info,com_relative_per,tag = getComByName(name)
+        if tag==-1:
+            break
+        for key in com_detail_info.keys():
+            if key in promap.keys():
+                comproperty[promap[key]]=com_detail_info[key]
+        comdata['property']=comproperty
+        comdata['original_id']=name
+        comdatas.append(comdata)
+    for comdata in comdatas:
+        for key in propertymap:
+            property=comdata['property']
+            if key not in property:
+                    property[key]="--"
+    comdatas_json['datas']=comdatas
+    orgdatas['datas']=comdatas
     with open('org_datas.json','w',encoding='utf-8') as f:
         json.dump(orgdatas, f,ensure_ascii=False)
-    # print("爬取完成")
+    print("爬取完成")
