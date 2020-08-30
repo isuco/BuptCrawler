@@ -137,9 +137,9 @@ def getComByName(com_name):
             '.block-data')
         for datagroup in infoblocks[1:]:
             if 'tyc-event-ch' in datagroup.attrs:
-                if datagroup['tyc-event-ch'] == 'CompangyDetail.gongshangxinxin':
+                if 'CompangyDetail.gongshangxinxin' in datagroup['tyc-event-ch']:
                     com_detail_info=dict(com_detail_info,**ProcessBackGroundDataGroup(datagroup))
-                elif datagroup['tyc-event-ch'] == 'CompangyDetail.qiyejianjiehk':
+                elif 'CompangyDetail.qiyejianjie' in datagroup['tyc-event-ch']:
                     com_detail_info=dict(com_detail_info,**ProcessIntroDataGroup(datagroup))
                 # elif datagroup['tyc-event-ch'] in ('CompangyDetail.dongshihuichengyuanhk','CompangyDetail.jianshihuichengyuanhk','CompangyDetail.guanlichengyuanhk'):
                 #     com_relative_per=dict(com_relative_per,**ProcessAdminiStratorDataGroup(datagroup))
