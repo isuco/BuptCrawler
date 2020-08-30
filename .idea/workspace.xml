@@ -2,15 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eadf1312-4ff6-4eea-9acf-b3a15fe0b4ee" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/proxy.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PropertyMap.json" beforeDir="false" afterPath="$PROJECT_DIR$/PropertyMap.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/crawler.py" beforeDir="false" afterPath="$PROJECT_DIR$/crawler.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -36,7 +43,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="File.Encoding" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.天眼查爬虫">
     <configuration name="天眼查爬虫" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Tianyancha_Crawler" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -59,9 +66,32 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="proxy" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Tianyancha_Crawler" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/proxy.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Python.天眼查爬虫" />
+        <item itemvalue="Python.proxy" />
       </list>
     </recent_temporary>
   </component>
@@ -88,22 +118,45 @@
       <option name="presentableId" value="Default" />
       <updated>1598498434572</updated>
       <workItem from="1598498468735" duration="26646000" />
-      <workItem from="1598579071505" duration="16399000" />
+      <workItem from="1598579071505" duration="17262000" />
+      <workItem from="1598599442439" duration="7500000" />
+      <workItem from="1598666781890" duration="20440000" />
+      <workItem from="1598749842079" duration="2053000" />
     </task>
+    <task id="LOCAL-00001" summary="增加了针对不同公司信息模板的爬取逻辑">
+      <created>1598598441628</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1598598441628</updated>
+    </task>
+    <task id="LOCAL-00002" summary="init commit">
+      <created>1598598503620</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1598598503620</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="增加了针对不同公司信息模板的爬取逻辑" />
+    <MESSAGE value="init commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="init commit" />
   </component>
   <component name="WindowStateProjectService">
     <state x="371" y="87" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1598585519878">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="371" y="87" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680@0.0.1280.680" timestamp="1598585519878" />
-    <state x="215" y="0" key="CommitChangelistDialog2" timestamp="1598598439246">
+    <state x="215" y="0" key="CommitChangelistDialog2" timestamp="1598598502097">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="215" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1598598439246" />
+    <state x="215" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1598598502097" />
     <state x="421" y="82" key="FileChooserDialogImpl" timestamp="1598530442964">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -116,42 +169,42 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="426" y="44" key="Github.UntrackedFilesDialog/0.0.1280.680@0.0.1280.680" timestamp="1598530872994" />
-    <state width="1237" height="292" key="GridCell.Tab.0.bottom" timestamp="1598598383609">
+    <state width="1222" height="344" key="GridCell.Tab.0.bottom" timestamp="1598750349243">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="292" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1598598383609" />
-    <state width="1237" height="292" key="GridCell.Tab.0.center" timestamp="1598598383608">
+    <state width="1222" height="344" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1598750349243" />
+    <state width="1222" height="344" key="GridCell.Tab.0.center" timestamp="1598750349242">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="292" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1598598383608" />
-    <state width="1237" height="292" key="GridCell.Tab.0.left" timestamp="1598598383608">
+    <state width="1222" height="344" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1598750349242" />
+    <state width="1222" height="344" key="GridCell.Tab.0.left" timestamp="1598750349241">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="292" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1598598383608" />
-    <state width="1237" height="292" key="GridCell.Tab.0.right" timestamp="1598598383608">
+    <state width="1222" height="344" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1598750349241" />
+    <state width="1222" height="344" key="GridCell.Tab.0.right" timestamp="1598750349242">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="292" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1598598383608" />
+    <state width="1222" height="344" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1598750349242" />
     <state x="142" y="0" key="SettingsEditor" timestamp="1598585434949">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="142" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1598585434949" />
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1598598464153">
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1598598514312">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1598598464153" />
-    <state width="634" height="348" key="XDebugger.FullValuePopup" timestamp="1598515227273">
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1598598514312" />
+    <state width="634" height="348" key="XDebugger.FullValuePopup" timestamp="1598603315976">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="634" height="348" key="XDebugger.FullValuePopup/0.0.1280.680@0.0.1280.680" timestamp="1598515227273" />
-    <state x="93" y="93" width="1095" height="495" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1598507093125">
+    <state width="634" height="348" key="XDebugger.FullValuePopup/0.0.1280.680@0.0.1280.680" timestamp="1598603315976" />
+    <state x="93" y="93" width="1095" height="495" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1598603977826">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="93" y="93" width="1095" height="495" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1280.680@0.0.1280.680" timestamp="1598507093125" />
-    <state x="325" y="165" key="com.intellij.ide.util.TipDialog" timestamp="1598499848632">
+    <state x="93" y="93" width="1095" height="495" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1280.680@0.0.1280.680" timestamp="1598603977826" />
+    <state x="325" y="165" key="com.intellij.ide.util.TipDialog" timestamp="1598666782167">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="325" y="165" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1598499848632" />
+    <state x="325" y="165" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1598666782167" />
     <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1598516051387">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -180,11 +233,13 @@
         <watch expression="col" language="Python" />
         <watch expression="col.contents[1].text" language="Python" />
         <watch expression="20%20==0" language="Python" />
+        <watch expression="soup.body.select('mt74')" language="Python" />
       </configuration>
     </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Tianyancha_Crawler$proxy.coverage" NAME="proxy Coverage Results" MODIFIED="1598602712590" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Python_Crawler_Tianyancha_master$.coverage" NAME="天眼查爬虫 Coverage Results" MODIFIED="1598531069317" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Tianyancha_Crawler$.coverage" NAME="天眼查爬虫 Coverage Results" MODIFIED="1598598383546" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Tianyancha_Crawler$.coverage" NAME="天眼查爬虫 Coverage Results" MODIFIED="1598750349137" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

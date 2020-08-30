@@ -8,6 +8,9 @@ import time
 import urllib
 import re
 import json
+import cookies as ck
+import random
+import copy
 
 def DelHtml(htmlString):
     pre = re.compile('<[^>]+>')
@@ -86,6 +89,7 @@ def ProcessAdminiStratorDataGroup(tag):
 
 def HttpResponse(url):
     User_Agent = 'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:56.0) Gecko/20100101 Firefox/56.0'
+    cookie=random.choice(ck.cookies)
     headers = {
         'Host': 'www.tianyancha.com',
         'Connection': 'keep-alive',
@@ -96,7 +100,8 @@ def HttpResponse(url):
         'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
         'Accept-Encoding': 'gzip, deflate, br',
         'Accept-Language': 'zh-CN,zh;q=0.9',
-        'Cookie': 'aliyungf_tc=AQAAAFV/bHMKPwcAQg5we9r40B5mUXJn; csrfToken=K5LiMrF4Z2X0remAkEKy1dqB; jsid=SEM-BAIDU-PZ0824-SY-000001; TYCID=6e494c00e78711ea97e07f267e553642; ssuid=7596876568; _ga=GA1.2.871234549.1598437947; _gid=GA1.2.768205796.1598437947; RTYCID=66d0f47c78b5488180e870a4ef0e985c; CT_TYCID=ce9bcb6846904207ac93ce4795d556fd; nice_id658cce70-d9dc-11e9-96c6-833900356dc6=06829402-e78c-11ea-bdc1-69c81e8afa48; bad_id658cce70-d9dc-11e9-96c6-833900356dc6=06829401-e78c-11ea-bdc1-69c81e8afa48; bannerFlag=true; cloud_token=3c0ca3085c1b486e8f95edb112bc1398; Hm_lvt_e92c8d65d92d534b0fc290df538b4758=1598437946,1598437991,1598522499; tyc-user-info=%257B%2522claimEditPoint%2522%253A%25220%2522%252C%2522vipToMonth%2522%253A%2522false%2522%252C%2522explainPoint%2522%253A%25220%2522%252C%2522personalClaimType%2522%253A%2522none%2522%252C%2522integrity%2522%253A%252210%2525%2522%252C%2522state%2522%253A%25220%2522%252C%2522score%2522%253A%25220%2522%252C%2522announcementPoint%2522%253A%25220%2522%252C%2522bidSubscribe%2522%253A%2522-1%2522%252C%2522vipManager%2522%253A%25220%2522%252C%2522onum%2522%253A%25220%2522%252C%2522monitorUnreadCount%2522%253A%25220%2522%252C%2522discussCommendCount%2522%253A%25220%2522%252C%2522showPost%2522%253Anull%252C%2522claimPoint%2522%253A%25220%2522%252C%2522token%2522%253A%2522eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxNTAwMTA5MTI5OCIsImlhdCI6MTU5ODUyMjU1NSwiZXhwIjoxNjMwMDU4NTU1fQ.lWYyEjDKV-Ad-bfKhOt4hF_njvKG4RG-DHLiShXdP8SmnICrHOJKE8KRR4954rvr2zJSag1Mg8vMU5lV89J2WA%2522%252C%2522schoolAuthStatus%2522%253A%25222%2522%252C%2522scoreUnit%2522%253A%2522%2522%252C%2522redPoint%2522%253A%25220%2522%252C%2522myTidings%2522%253A%25220%2522%252C%2522companyAuthStatus%2522%253A%25222%2522%252C%2522myAnswerCount%2522%253A%25220%2522%252C%2522myQuestionCount%2522%253A%25220%2522%252C%2522signUp%2522%253A%25221%2522%252C%2522privateMessagePointWeb%2522%253A%25220%2522%252C%2522nickname%2522%253A%2522%25E9%2592%259F%25E7%2581%25B5%2522%252C%2522privateMessagePoint%2522%253A%25220%2522%252C%2522bossStatus%2522%253A%25222%2522%252C%2522isClaim%2522%253A%25220%2522%252C%2522yellowDiamondEndTime%2522%253A%25220%2522%252C%2522new%2522%253A%25221%2522%252C%2522yellowDiamondStatus%2522%253A%2522-1%2522%252C%2522pleaseAnswerCount%2522%253A%25220%2522%252C%2522vnum%2522%253A%25220%2522%252C%2522bizCardUnread%2522%253A%25220%2522%252C%2522mobile%2522%253A%252215001091298%2522%257D; auth_token=eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxNTAwMTA5MTI5OCIsImlhdCI6MTU5ODUyMjU1NSwiZXhwIjoxNjMwMDU4NTU1fQ.lWYyEjDKV-Ad-bfKhOt4hF_njvKG4RG-DHLiShXdP8SmnICrHOJKE8KRR4954rvr2zJSag1Mg8vMU5lV89J2WA; tyc-user-phone=%255B%252215001091298%2522%255D; token=154f6daa6f7346b6ba87f6483b364d0c; _utm=419be1deeeb345b986f8abe506c9c16b; Hm_lpvt_e92c8d65d92d534b0fc290df538b4758=1598522563'            }
+        'Cookie': cookie
+    }
     try:
         response = requests.get(url,headers = headers)
         if response.status_code != 200:
@@ -144,6 +149,14 @@ def getComByName(com_name):
         print('error')
         return com_detail_info,com_relative_per,-1
 
+def reviseData(datas,compnames,propertyMap):
+    datas_revised=[]
+    for i in range(len(datas)):
+        data=datas[i]
+        r_data=copy.deepcopy(data)
+        r_data['original_id']=compnames[i]
+        r_data['property']['Domcile']
+
 
 if __name__ == '__main__':
     with open('org_names.json','r',encoding='utf-8') as f:
@@ -152,28 +165,35 @@ if __name__ == '__main__':
     with open('PropertyMap.json','r',encoding='utf-8') as f:
         propertymap=json.load(f)
     #已完成爬取数据
-    with open('orgdatas.json','r',encoding='utf-8') as f:
+    with open('org_datas.json','r',encoding='utf-8') as f:
         orgdatas=json.load(f)
         print()
+
     promap={}
     for item in propertymap.items():
         for value in item[1]:
             promap[value]=item[0]
     comdatas=orgdatas['datas']
-    comdatas_json={}
-    for name in compnames[len(comdatas):]:
-        print(name)
-        comdata,comproperty={},{}
-        comdata['label']='Organization'
-        com_detail_info,com_relative_per,tag = getComByName(name)
-        if tag==-1:
-            break
-        for key in com_detail_info.keys():
-            if key in promap.keys():
-                comproperty[promap[key]]=com_detail_info[key]
-        comdata['property']=comproperty
-        comdatas.append(comdata)
-    comdatas_json['datas']=comdatas
-    with open('orgdatas.json','w',encoding='utf-8') as f:
-        json.dump(comdatas_json, f,ensure_ascii=False)
-    print("爬取完成")
+    # comdatas_json={}
+    # for name in compnames[len(comdatas):]:
+    #     print(name)
+    #     comdata,comproperty={},{}
+    #     comdata['label']='Organization'
+    #     com_detail_info,com_relative_per,tag = getComByName(name)
+    #     if tag==-1:
+    #         break
+    #     for key in com_detail_info.keys():
+    #         if key in promap.keys():
+    #             comproperty[promap[key]]=com_detail_info[key]
+    #     comdata['property']=comproperty
+    #     comdatas.append(comdata)
+    # for comdata in comdatas:
+    #     for key in propertymap:
+    #         property=comdata['property']
+    #         if key not in property:
+    #                 property[key]="--"
+    # comdatas_json['datas']=comdatas
+    # orgdatas['datas']=comdatas
+    with open('org_datas.json','w',encoding='utf-8') as f:
+        json.dump(orgdatas, f,ensure_ascii=False)
+    # print("爬取完成")
