@@ -22,35 +22,28 @@ def getPerName(text):
     pre=re.search('(.*)他有',text)
     return pre.group(1)
 
-def ProcessBackGroundDataGroup(tag):
-    #背景信息爬
-    com_detail_info={}
-    basic_info_table = tag.select('.data-content .table.-striped-col.-border-top-none.-breakall')[
-        0].tbody.contents
-    # 评分部分
-    score_html = basic_info_table[0].contents[4].contents[0].contents
-    if len(score_html) < 3:
-        score = score_html[1].string
-    else:
-        score = score_html[1].string + score_html[2].string
-    com_detail_info['score'] = score
-    for col in basic_info_table:
-        infolist = col.contents
-        for i in range(len(infolist) // 2):
-            key = infolist[i * 2].string
-            if key is None:
-                key = infolist[i * 2].text
-                if "统一社会信用代码" in key:
-                    key="统一社会信用代码"
-                elif "纳税人识别号" in key:
-                    key="纳税人识别号"
-                elif "组织机构代码" in key:
-                    key="组织机构代码"
-            value = infolist[i * 2 + 1].string
-            if value is None:
-                value = infolist[i * 2 + 1].text
-            com_detail_info[key] = value
-    return com_detail_info
+# def ProcessBackGroundDataGroup(tag):
+#     #背景信息爬
+#     com_detail_info={}
+#     basic_info_table = tag.select('.data-content .table')[0].tbody.contents
+#     # # 评分部分
+#     # score_html = basic_info_table[0].contents[4].contents[0].contents
+#     # if len(score_html) < 3:
+#     #     score = score_html[1].string
+#     # else:
+#     #     score = score_html[1].string + score_html[2].string
+#     # com_detail_info['score'] = score
+#     for col in basic_info_table:
+#         infolist = col.contents
+#         for i in range(len(infolist) // 2):
+#             key = infolist[i * 2].string
+#             if key is None:
+#                 key = infolist[i * 2].text
+#             value = infolist[i * 2 + 1].string
+#             if value is None:
+#                 value = infolist[i * 2 + 1].text
+#             com_detail_info[key] = value
+#     return com_detail_info
 
 def ProcessMainMemberDataGroup(tag):
     #主要人员爬
@@ -65,7 +58,11 @@ def ProcessMainMemberDataGroup(tag):
 def ProcessIntroDataGroup(tag):
     #公司简介爬
     com_detail_info={}
-    intro_table = tag.select('.data-content .table.-striped-col')[0].tbody.contents
+    intro_tables = tag.select('.data-content tbody')
+    if len(intro_tables)>1:
+        intro_table=intro_tables[-1]
+    else:
+        intro_table=intro_tables[0]
     for col in intro_table:
         infolist = col.contents
         for i in range(len(infolist) // 2):
@@ -116,39 +113,47 @@ def HttpResponse(url):
         return None
 
 def getComByName(com_name):
-    try:
-        url = 'https://www.tianyancha.com/search?key='+com_name
-        soup=HttpResponse(url)
-        com_detail_info={}
-        com_relative_per={}
-        if soup is None:
-            return com_detail_info,com_relative_per
-        com_all_info = soup.body.select('.mt74 .container.-top .container-left .search-block.header-block-container')[0]
-        search_results= com_all_info.select('.search-item.sv-search-company')
-        if len(search_results)==0:
-            print('未找到相关公司信息')
-            return com_detail_info,com_relative_per,-2
-        else:
-            com_info=search_results[0]
-        #公司详情页面跳转
-        info_href = com_info.select('.content .header')[0].a['href']
-        soup=HttpResponse(info_href)
-        infoblocks=soup.body.select('.mt74 .container.-top .company-warp.-public .detail-list')[0].select(
-            '.block-data')
-        for datagroup in infoblocks:
-            if 'tyc-event-ch' in datagroup.attrs:
-                if 'CompangyDetail.gongshangxinxin' in datagroup['tyc-event-ch']:
-                    com_detail_info=dict(com_detail_info,**ProcessBackGroundDataGroup(datagroup))
-                elif 'CompangyDetail.qiyejianjie' in datagroup['tyc-event-ch']:
-                    com_detail_info=dict(com_detail_info,**ProcessIntroDataGroup(datagroup))
-                # elif datagroup['tyc-event-ch'] in ('CompangyDetail.dongshihuichengyuanhk','CompangyDetail.jianshihuichengyuanhk','CompangyDetail.guanlichengyuanhk'):
-                #     com_relative_per=dict(com_relative_per,**ProcessAdminiStratorDataGroup(datagroup))
-                # elif datagroup['tyc-event-ch'] == 'CompangyDetail.zhuyaorenyuan':
-                #     com_relative_per=dict(com_relative_per,**ProcessMainMemberDataGroup(datagroup))
-        return com_detail_info,com_relative_per,0
-    except Exception:
-        print('error')
-        return com_detail_info,com_relative_per,-1
+    url = 'https://www.tianyancha.com/search?key='+com_name
+    soup=HttpResponse(url)
+    com_detail_info={}
+    com_relative_per={}
+    if soup is None:
+        return com_detail_info,com_relative_per
+    com_all_info = soup.body.select('.mt74 .container.-top .container-left .search-block.header-block-container')[0]
+    search_results= com_all_info.select('.search-item.sv-search-company')
+    if len(search_results)==0:
+        print('未找到相关公司信息')
+        return com_detail_info,com_relative_per,-2
+    else:
+        com_info=search_results[0]
+    #公司详情页面跳转
+    info_href = com_info.select('.content .header')[0].a['href']
+    soup=HttpResponse(info_href)
+    infoblocks=soup.body.select('.mt74 .container.-top .company-warp.-public .detail-list')[0].select(
+        '.block-data')
+    for datagroup in infoblocks:
+        if 'tyc-event-ch' in datagroup.attrs:
+            if 'CompangyDetail.gongshangxinxin' in datagroup['tyc-event-ch'] \
+                or 'CompangyDetail.qiyejianjie' in datagroup['tyc-event-ch'] \
+                or 'CompangyDetail.lianxixinxin' in datagroup['tyc-event-ch']:
+                com_detail_info=dict(com_detail_info,**ProcessIntroDataGroup(datagroup))
+            # elif datagroup['tyc-event-ch'] in ('CompangyDetail.dongshihuichengyuanhk','CompangyDetail.jianshihuichengyuanhk','CompangyDetail.guanlichengyuanhk'):
+            #     com_relative_per=dict(com_relative_per,**ProcessAdminiStratorDataGroup(datagroup))
+            # elif datagroup['tyc-event-ch'] == 'CompangyDetail.zhuyaorenyuan':
+            #     com_relative_per=dict(com_relative_per,**ProcessMainMemberDataGroup(datagroup))
+    process_dict={}
+    for key in com_detail_info.keys():
+        if "统一社会信用代码" in key:
+            process_dict['统一社会信用代码'] = com_detail_info[key]
+        elif "纳税人识别号" in key:
+            process_dict['纳税人识别号'] = com_detail_info[key]
+        elif "组织机构代码" in key:
+            process_dict['组织机构代码'] = com_detail_info[key]
+    com_detail_info=dict(com_detail_info,**process_dict)
+    return com_detail_info,com_relative_per,0
+    # except Exception:
+    #     print('error')
+    #     return com_detail_info,com_relative_per,-1
 
 def reviseData():
     with open('org_names.json','r',encoding='utf-8') as f:
@@ -192,7 +197,7 @@ if __name__ == '__main__':
             promap[value]=item[0]
     comdatas=orgdatas['datas']
     comdatas_json={}
-    for name in compnames[len(comdatas)]:
+    for name in compnames[10000:]:
         print(name)
         comdata,comproperty={},{}
         comdata['label']='Organization'
@@ -212,6 +217,6 @@ if __name__ == '__main__':
                     property[key]="--"
     comdatas_json['datas']=comdatas
     orgdatas['datas']=comdatas
-    with open('org_datas.json','w',encoding='utf-8') as f:
+    with open('org_datas.json','w') as f:
         json.dump(orgdatas, f,ensure_ascii=False)
     print("爬取完成")
