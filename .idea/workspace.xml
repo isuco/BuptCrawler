@@ -119,7 +119,7 @@
       <workItem from="1598579071505" duration="17262000" />
       <workItem from="1598599442439" duration="7500000" />
       <workItem from="1598666781890" duration="20440000" />
-      <workItem from="1598749842079" duration="20533000" />
+      <workItem from="1598749842079" duration="21297000" />
     </task>
     <task id="LOCAL-00001" summary="增加了针对不同公司信息模板的爬取逻辑">
       <created>1598598441628</created>
@@ -163,7 +163,14 @@
       <option name="project" value="LOCAL" />
       <updated>1598770735294</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="fix communication method information">
+      <created>1598780472614</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1598780472615</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -176,17 +183,18 @@
     <MESSAGE value="fix little bugs" />
     <MESSAGE value="add qiyejianjie module" />
     <MESSAGE value="fix obtain datagroup information" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix obtain datagroup information" />
+    <MESSAGE value="fix communication method information" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix communication method information" />
   </component>
   <component name="WindowStateProjectService">
     <state x="371" y="87" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1598756011815">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="371" y="87" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680@0.0.1280.680" timestamp="1598756011815" />
-    <state x="215" y="0" key="CommitChangelistDialog2" timestamp="1598770734296">
+    <state x="215" y="0" key="CommitChangelistDialog2" timestamp="1598780471568">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="215" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1598770734296" />
+    <state x="215" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1598780471568" />
     <state x="421" y="82" key="FileChooserDialogImpl" timestamp="1598530442964">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -219,10 +227,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="142" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1598780362459" />
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1598771066875">
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1598780476918">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1598771066875" />
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1598780476918" />
     <state width="634" height="348" key="XDebugger.FullValuePopup" timestamp="1598603315976">
       <screen x="0" y="0" width="1280" height="680" />
     </state>

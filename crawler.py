@@ -113,47 +113,48 @@ def HttpResponse(url):
         return None
 
 def getComByName(com_name):
-    url = 'https://www.tianyancha.com/search?key='+com_name
-    soup=HttpResponse(url)
-    com_detail_info={}
-    com_relative_per={}
-    if soup is None:
-        return com_detail_info,com_relative_per
-    com_all_info = soup.body.select('.mt74 .container.-top .container-left .search-block.header-block-container')[0]
-    search_results= com_all_info.select('.search-item.sv-search-company')
-    if len(search_results)==0:
-        print('未找到相关公司信息')
-        return com_detail_info,com_relative_per,-2
-    else:
-        com_info=search_results[0]
-    #公司详情页面跳转
-    info_href = com_info.select('.content .header')[0].a['href']
-    soup=HttpResponse(info_href)
-    infoblocks=soup.body.select('.mt74 .container.-top .company-warp.-public .detail-list')[0].select(
-        '.block-data')
-    for datagroup in infoblocks:
-        if 'tyc-event-ch' in datagroup.attrs:
-            if 'CompangyDetail.gongshangxinxin' in datagroup['tyc-event-ch'] \
-                or 'CompangyDetail.qiyejianjie' in datagroup['tyc-event-ch'] \
-                or 'CompangyDetail.lianxixinxin' in datagroup['tyc-event-ch']:
-                com_detail_info=dict(com_detail_info,**ProcessIntroDataGroup(datagroup))
-            # elif datagroup['tyc-event-ch'] in ('CompangyDetail.dongshihuichengyuanhk','CompangyDetail.jianshihuichengyuanhk','CompangyDetail.guanlichengyuanhk'):
-            #     com_relative_per=dict(com_relative_per,**ProcessAdminiStratorDataGroup(datagroup))
-            # elif datagroup['tyc-event-ch'] == 'CompangyDetail.zhuyaorenyuan':
-            #     com_relative_per=dict(com_relative_per,**ProcessMainMemberDataGroup(datagroup))
-    process_dict={}
-    for key in com_detail_info.keys():
-        if "统一社会信用代码" in key:
-            process_dict['统一社会信用代码'] = com_detail_info[key]
-        elif "纳税人识别号" in key:
-            process_dict['纳税人识别号'] = com_detail_info[key]
-        elif "组织机构代码" in key:
-            process_dict['组织机构代码'] = com_detail_info[key]
-    com_detail_info=dict(com_detail_info,**process_dict)
-    return com_detail_info,com_relative_per,0
-    # except Exception:
-    #     print('error')
-    #     return com_detail_info,com_relative_per,-1
+    try:
+        url = 'https://www.tianyancha.com/search?key='+com_name
+        soup=HttpResponse(url)
+        com_detail_info={}
+        com_relative_per={}
+        if soup is None:
+            return com_detail_info,com_relative_per
+        com_all_info = soup.body.select('.mt74 .container.-top .container-left .search-block.header-block-container')[0]
+        search_results= com_all_info.select('.search-item.sv-search-company')
+        if len(search_results)==0:
+            print('未找到相关公司信息')
+            return com_detail_info,com_relative_per,-2
+        else:
+            com_info=search_results[0]
+        #公司详情页面跳转
+        info_href = com_info.select('.content .header')[0].a['href']
+        soup=HttpResponse(info_href)
+        infoblocks=soup.body.select('.mt74 .container.-top .company-warp.-public .detail-list')[0].select(
+            '.block-data')
+        for datagroup in infoblocks:
+            if 'tyc-event-ch' in datagroup.attrs:
+                if 'CompangyDetail.gongshangxinxin' in datagroup['tyc-event-ch'] \
+                    or 'CompangyDetail.qiyejianjie' in datagroup['tyc-event-ch'] \
+                    or 'CompangyDetail.lianxixinxin' in datagroup['tyc-event-ch']:
+                    com_detail_info=dict(com_detail_info,**ProcessIntroDataGroup(datagroup))
+                # elif datagroup['tyc-event-ch'] in ('CompangyDetail.dongshihuichengyuanhk','CompangyDetail.jianshihuichengyuanhk','CompangyDetail.guanlichengyuanhk'):
+                #     com_relative_per=dict(com_relative_per,**ProcessAdminiStratorDataGroup(datagroup))
+                # elif datagroup['tyc-event-ch'] == 'CompangyDetail.zhuyaorenyuan':
+                #     com_relative_per=dict(com_relative_per,**ProcessMainMemberDataGroup(datagroup))
+        process_dict={}
+        for key in com_detail_info.keys():
+            if "统一社会信用代码" in key:
+                process_dict['统一社会信用代码'] = com_detail_info[key]
+            elif "纳税人识别号" in key:
+                process_dict['纳税人识别号'] = com_detail_info[key]
+            elif "组织机构代码" in key:
+                process_dict['组织机构代码'] = com_detail_info[key]
+        com_detail_info=dict(com_detail_info,**process_dict)
+        return com_detail_info,com_relative_per,0
+    except Exception:
+        print('error')
+        return com_detail_info,com_relative_per,-1
 
 def reviseData():
     with open('org_names.json','r',encoding='utf-8') as f:
