@@ -1,4 +1,6 @@
-1.	运行方式：直接运行，代码会读取org_names.json中的公司名从天眼查上请求数据运行，爬到的数据无论（中间是否中断）会存到org_product_datas.json。运行前请先将自己的cookie放在代码header里;
+图片无法正常显示可以查看项目中的版本
+
+1.运行方式：直接运行，代码会读取org_names.json中的公司名从天眼查上请求数据运行，爬到的数据无论（中间是否中断）会存到org_product_datas.json。运行前请先将自己的cookie放在代码header里;
 
 2.Cookie获取方式：
 ![image](https://github.com/isuco/ImageRository/tree/master/images/cb1.jpg)
