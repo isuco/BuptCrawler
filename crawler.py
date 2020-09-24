@@ -13,6 +13,8 @@ import random
 import copy
 import os
 
+INPUT_FILE='org_names.json'
+OUTPUT_FILE='org_product_datas.json'
 def DelHtml(htmlString):
     pre = re.compile('<[^>]+>')
     s1 = pre.sub(" ", htmlString)
@@ -46,7 +48,7 @@ def getPerName(text):
 #     return com_detail_info
 
 def ProcessProduct(tag):
-    #产品竞品爬
+    #供应商、竞品、业务信息爬
     com_product_info = []
     headers=[]
     intro_headers = tag.select('.data-content thead')[0].select('th')
@@ -197,42 +199,44 @@ def getComByName(com_name):
         print('error')
         return com_detail_info,com_relative_per,-1
 
-def reviseData():
-    with open('org_names.json','r',encoding='utf-8') as f:
-        compnames=json.load(f)
-
-    with open('PropertyMap.json','r',encoding='utf-8') as f:
-        propertymap=json.load(f)
-    with open('org_datas.json','r',encoding='utf-8') as f:
-        orgdatas=json.load(f)
-        print()
-    comdatas = orgdatas['datas']
-    datas_revised=[]
-    for i in range(len(comdatas)):
-        data=comdatas[i]
-        r_data=copy.deepcopy(data)
-        r_data['original_id']=compnames[i]
-        r_data['property']['Domicile']=r_data['domicile']
-        for key in r_data['property'].keys():
-            if r_data[key]=='-':
-                r_data[key]='--'
-    orgdatas['datas'] = datas_revised
-    with open('org_datas.json', 'w', encoding='utf-8') as f:
-        json.dump(orgdatas, f, ensure_ascii=False)
+# def reviseData():
+#
+#     with open('','r',encoding='utf-8') as f:
+#         compnames=json.load(f)
+#
+#     with open('PropertyMap.json','r',encoding='utf-8') as f:
+#         propertymap=json.load(f)
+#     with open(INPUT_FILE,'r',encoding='utf-8') as f:
+#         orgdatas=json.load(f)
+#         print()
+#     comdatas = orgdatas['datas']
+#     datas_revised=[]
+#     for i in range(len(comdatas)):
+#         data=comdatas[i]
+#         r_data=copy.deepcopy(data)
+#         r_data['original_id']=compnames[i]
+#         r_data['property']['Domicile']=r_data['domicile']
+#         for key in r_data['property'].keys():
+#             if r_data[key]=='-':
+#                 r_data[key]='--'
+#     orgdatas['datas'] = datas_revised
+#     with open(OUPUT_FILE, 'w', encoding='utf-8') as f:
+#         json.dump(orgdatas, f, ensure_ascii=False)
 
 
 
 if __name__ == '__main__':
-    with open('org_names.json','r',encoding='utf-8') as f:
+    #需要爬取的公司名
+    with open(INPUT_FILE,'r',encoding='utf-8') as f:
         compnames=json.load(f)
 
     # with open('PropertyMap.json','r',encoding='utf-8') as f:
     #     propertymap=json.load(f)
-    #已完成爬取数据
-    if not os.path.exists('org_product_datas.json'):
+    #读取已完成爬取数据
+    if not os.path.exists(OUTPUT_FILE):
         orgdatas={"datas":[]}
     else:
-        with open('org_product_datas.json','r',encoding='utf-8') as f:
+        with open(OUTPUT_FILE,'r',encoding='utf-8') as f:
             orgdatas=json.load(f)
     # promap={}
     # for item in propertymap.items():
@@ -241,6 +245,7 @@ if __name__ == '__main__':
     # comdatas=orgdatas_new['datas']
     comdatas=orgdatas['datas']
     comdatas_json={}
+    #从上次中断的地方继续爬
     for name in compnames[len(comdatas):]:
         print(name)
         comdata={}
@@ -261,6 +266,6 @@ if __name__ == '__main__':
     #         if key not in property:
     #                 property[key]="--"
     comdatas_json['datas']=comdatas
-    with open('org_product_datas.json','w',encoding='utf-8') as f:
+    with open(OUTPUT_FILE,'w',encoding='utf-8') as f:
         json.dump(comdatas_json, f,ensure_ascii=False)
     print("爬取完成")
