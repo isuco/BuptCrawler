@@ -45,6 +45,28 @@ def getPerName(text):
 #             com_detail_info[key] = value
 #     return com_detail_info
 
+def ProcessProduct(tag):
+    #产品竞品爬
+    com_product_info = []
+    headers=[]
+    intro_headers = tag.select('.data-content thead')[0].select('th')
+    for h in intro_headers:
+        head=h.string
+        if head is None:
+            head=h.text
+        headers.append(head)
+    intro_tables = tag.select('.data-content tbody')
+    if len(intro_tables) > 1:
+        intro_table = intro_tables[-1]
+    else:
+        intro_table = intro_tables[0]
+    for col in intro_table:
+        product={}
+        for i,h in enumerate(headers):
+            product[h]=col.contents[i].text
+        com_product_info.append(product)
+    return com_product_info
+
 def ProcessMainMemberDataGroup(tag):
     #主要人员爬
     com_relative_per={}
@@ -98,6 +120,7 @@ def HttpResponse(url):
         'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
         'Accept-Encoding': 'gzip, deflate, br',
         'Accept-Language': 'zh-CN,zh;q=0.9',
+        #在此填上自己登陆后搜索使用的cookie
         'Cookie': cookie
     }
     try:
@@ -119,7 +142,7 @@ def getComByName(com_name):
         com_detail_info={}
         com_relative_per={}
         if soup is None:
-            return com_detail_info,com_relative_per
+            return com_detail_info,com_relative_per,-1
         com_all_info = soup.body.select('.mt74 .container.-top .container-left .search-block.header-block-container')[0]
         search_results= com_all_info.select('.search-item.sv-search-company')
         if len(search_results)==0:
@@ -132,25 +155,43 @@ def getComByName(com_name):
         soup=HttpResponse(info_href)
         infoblocks=soup.body.select('.mt74 .container.-top .company-warp.-public .detail-list')[0].select(
             '.block-data')
+        com_guests_info=[]
+        com_services_info=[]
+        com_producers_info=[]
+        com_opponents_info=[]
         for datagroup in infoblocks:
             if 'tyc-event-ch' in datagroup.attrs:
-                if 'CompangyDetail.gongshangxinxin' in datagroup['tyc-event-ch'] \
-                    or 'CompangyDetail.qiyejianjie' in datagroup['tyc-event-ch'] \
-                    or 'CompangyDetail.lianxixinxin' in datagroup['tyc-event-ch']:
-                    com_detail_info=dict(com_detail_info,**ProcessIntroDataGroup(datagroup))
+                #有些公司会在信息块名后加上hk,或是其他后缀
+                # if 'CompangyDetail.gongshangxinxin' in datagroup['tyc-event-ch'] \
+                #     or 'CompangyDetail.qiyejianjie' in datagroup['tyc-event-ch'] \
+                #     or 'CompangyDetail.lianxixinxin' in datagroup['tyc-event-ch']:
+                #     com_detail_info=dict(com_detail_info,**ProcessIntroDataGroup(datagroup))
                 # elif datagroup['tyc-event-ch'] in ('CompangyDetail.dongshihuichengyuanhk','CompangyDetail.jianshihuichengyuanhk','CompangyDetail.guanlichengyuanhk'):
                 #     com_relative_per=dict(com_relative_per,**ProcessAdminiStratorDataGroup(datagroup))
                 # elif datagroup['tyc-event-ch'] == 'CompangyDetail.zhuyaorenyuan':
                 #     com_relative_per=dict(com_relative_per,**ProcessMainMemberDataGroup(datagroup))
-        process_dict={}
-        for key in com_detail_info.keys():
-            if "统一社会信用代码" in key:
-                process_dict['统一社会信用代码'] = com_detail_info[key]
-            elif "纳税人识别号" in key:
-                process_dict['纳税人识别号'] = com_detail_info[key]
-            elif "组织机构代码" in key:
-                process_dict['组织机构代码'] = com_detail_info[key]
-        com_detail_info=dict(com_detail_info,**process_dict)
+                if 'CompangyDetail.qiyeyewu' in datagroup['tyc-event-ch']:
+                    com_services_info+=ProcessProduct(datagroup)
+                elif 'CompangyDetail.jingpinxinxi' in datagroup['tyc-event-ch']:
+                    com_opponents_info+=ProcessProduct(datagroup)
+                elif 'CompangyDetail.gongyingshang' in datagroup['tyc-event-ch']:
+                    com_producers_info+=ProcessProduct(datagroup)
+                elif 'CompangyDetail.gongyingshang' in datagroup['tyc-event-ch']:
+                    com_guests_info+=ProcessProduct(datagroup)
+
+        com_detail_info['guests']=com_guests_info
+        com_detail_info['producers']=com_producers_info
+        com_detail_info['opponents']=com_opponents_info
+        com_detail_info['services']=com_services_info
+        # process_dict = {}
+        # for key in com_detail_info.keys():
+        #     if "统一社会信用代码" in key:
+        #         process_dict['统一社会信用代码'] = com_detail_info[key]
+        #     elif "纳税人识别号" in key:
+        #         process_dict['纳税人识别号'] = com_detail_info[key]
+        #     elif "组织机构代码" in key:
+        #         process_dict['组织机构代码'] = com_detail_info[key]
+        # com_detail_info=dict(com_detail_info,**process_dict)
         return com_detail_info,com_relative_per,0
     except Exception:
         print('error')
@@ -180,44 +221,46 @@ def reviseData():
         json.dump(orgdatas, f, ensure_ascii=False)
 
 
+
 if __name__ == '__main__':
     with open('org_names.json','r',encoding='utf-8') as f:
         compnames=json.load(f)
 
-    with open('PropertyMap.json','r',encoding='utf-8') as f:
-        propertymap=json.load(f)
+    # with open('PropertyMap.json','r',encoding='utf-8') as f:
+    #     propertymap=json.load(f)
     #已完成爬取数据
-    if not os.path.exists('org_datas.json'):
+    if not os.path.exists('org_product_datas.json'):
         orgdatas={"datas":[]}
     else:
-        with open('org_datas.json','r',encoding='utf-8') as f:
+        with open('org_product_datas.json','r',encoding='utf-8') as f:
             orgdatas=json.load(f)
-    promap={}
-    for item in propertymap.items():
-        for value in item[1]:
-            promap[value]=item[0]
+    # promap={}
+    # for item in propertymap.items():
+    #     for value in item[1]:
+    #         promap[value]=item[0]
+    # comdatas=orgdatas_new['datas']
     comdatas=orgdatas['datas']
     comdatas_json={}
-    for name in compnames[10000:]:
+    for name in compnames[len(comdatas):]:
         print(name)
-        comdata,comproperty={},{}
+        comdata={}
         comdata['label']='Organization'
+        comdata['original_id'] = name
         com_detail_info,com_relative_per,tag = getComByName(name)
         if tag==-1:
             break
-        for key in com_detail_info.keys():
-            if key in promap.keys():
-                comproperty[promap[key]]=com_detail_info[key]
-        comdata['property']=comproperty
-        comdata['original_id']=name
+        comdata['produce_info']=com_detail_info
         comdatas.append(comdata)
-    for comdata in comdatas:
-        for key in propertymap:
-            property=comdata['property']
-            if key not in property:
-                    property[key]="--"
+
+        # for key in com_detail_info.keys():
+        #     if key in promap.keys():
+        #         comproperty[promap[key]]=com_detail_info[key]
+    # for comdata in comdatas:
+    #     for key in propertymap:
+    #         property=comdata['property']
+    #         if key not in property:
+    #                 property[key]="--"
     comdatas_json['datas']=comdatas
-    orgdatas['datas']=comdatas
-    with open('org_datas.json','w') as f:
-        json.dump(orgdatas, f,ensure_ascii=False)
+    with open('org_product_datas.json','w',encoding='utf-8') as f:
+        json.dump(comdatas_json, f,ensure_ascii=False)
     print("爬取完成")

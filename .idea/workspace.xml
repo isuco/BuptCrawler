@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="eadf1312-4ff6-4eea-9acf-b3a15fe0b4ee" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cookies.py" beforeDir="false" afterPath="$PROJECT_DIR$/cookies.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/crawler.py" beforeDir="false" afterPath="$PROJECT_DIR$/crawler.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -39,7 +40,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="settings.github" />
+    <property name="settings.editor.selected.configurable" value="File.Encoding" />
   </component>
   <component name="RunManager" selected="Python.天眼查爬虫">
     <configuration name="天眼查爬虫" type="PythonConfigurationType" factoryName="Python" temporary="true">
@@ -119,7 +120,15 @@
       <workItem from="1598579071505" duration="17262000" />
       <workItem from="1598599442439" duration="7500000" />
       <workItem from="1598666781890" duration="20440000" />
-      <workItem from="1598749842079" duration="21297000" />
+      <workItem from="1598749842079" duration="28520000" />
+      <workItem from="1598836363519" duration="9747000" />
+      <workItem from="1599033844516" duration="6134000" />
+      <workItem from="1599107778405" duration="13488000" />
+      <workItem from="1599200290313" duration="16464000" />
+      <workItem from="1599265841810" duration="14549000" />
+      <workItem from="1599351157323" duration="3345000" />
+      <workItem from="1599968420478" duration="4194000" />
+      <workItem from="1600936010439" duration="5995000" />
     </task>
     <task id="LOCAL-00001" summary="增加了针对不同公司信息模板的爬取逻辑">
       <created>1598598441628</created>
@@ -170,7 +179,14 @@
       <option name="project" value="LOCAL" />
       <updated>1598780472615</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="fix little bug">
+      <created>1598784235997</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1598784235997</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -184,17 +200,18 @@
     <MESSAGE value="add qiyejianjie module" />
     <MESSAGE value="fix obtain datagroup information" />
     <MESSAGE value="fix communication method information" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix communication method information" />
+    <MESSAGE value="fix little bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix little bug" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="371" y="87" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1598756011815">
+    <state x="371" y="87" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1600942173624">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="371" y="87" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680@0.0.1280.680" timestamp="1598756011815" />
-    <state x="215" y="0" key="CommitChangelistDialog2" timestamp="1598780471568">
+    <state x="371" y="87" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680@0.0.1280.680" timestamp="1600942173624" />
+    <state x="215" y="0" key="CommitChangelistDialog2" timestamp="1598784234956">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="215" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1598780471568" />
+    <state x="215" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1598784234956" />
     <state x="421" y="82" key="FileChooserDialogImpl" timestamp="1598530442964">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -207,54 +224,63 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="426" y="44" key="Github.UntrackedFilesDialog/0.0.1280.680@0.0.1280.680" timestamp="1598530872994" />
-    <state width="1222" height="247" key="GridCell.Tab.0.bottom" timestamp="1598780387592">
+    <state width="1237" height="57" key="GridCell.Tab.0.bottom" timestamp="1600942177567">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1222" height="247" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1598780387592" />
-    <state width="1222" height="247" key="GridCell.Tab.0.center" timestamp="1598780387592">
+    <state width="1237" height="57" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1600942177567" />
+    <state width="1237" height="57" key="GridCell.Tab.0.center" timestamp="1600942177567">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1222" height="247" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1598780387592" />
-    <state width="1222" height="247" key="GridCell.Tab.0.left" timestamp="1598780387592">
+    <state width="1237" height="57" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1600942177567" />
+    <state width="1237" height="57" key="GridCell.Tab.0.left" timestamp="1600942177567">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1222" height="247" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1598780387592" />
-    <state width="1222" height="247" key="GridCell.Tab.0.right" timestamp="1598780387592">
+    <state width="1237" height="57" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1600942177567" />
+    <state width="1237" height="57" key="GridCell.Tab.0.right" timestamp="1600942177567">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1222" height="247" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1598780387592" />
-    <state x="142" y="0" key="SettingsEditor" timestamp="1598780362459">
+    <state width="1237" height="57" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1600942177567" />
+    <state x="142" y="0" key="SettingsEditor" timestamp="1600939364943">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="142" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1598780362459" />
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1598780476918">
+    <state x="142" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1600939364943" />
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1598784247414">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1598780476918" />
-    <state width="634" height="348" key="XDebugger.FullValuePopup" timestamp="1598603315976">
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1598784247414" />
+    <state width="634" height="348" key="XDebugger.FullValuePopup" timestamp="1600941889272">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="634" height="348" key="XDebugger.FullValuePopup/0.0.1280.680@0.0.1280.680" timestamp="1598603315976" />
-    <state x="93" y="93" width="1095" height="495" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1598603977826">
+    <state width="634" height="348" key="XDebugger.FullValuePopup/0.0.1280.680@0.0.1280.680" timestamp="1600941889272" />
+    <state x="93" y="93" width="1095" height="495" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1600942010346">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="93" y="93" width="1095" height="495" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1280.680@0.0.1280.680" timestamp="1598603977826" />
-    <state x="325" y="165" key="com.intellij.ide.util.TipDialog" timestamp="1598666782167">
+    <state x="93" y="93" width="1095" height="495" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1280.680@0.0.1280.680" timestamp="1600942010346" />
+    <state x="325" y="165" key="com.intellij.ide.util.TipDialog" timestamp="1599200294735">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="325" y="165" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1598666782167" />
+    <state x="325" y="165" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1599200294735" />
     <state x="279" y="74" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1598780230960">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="279" y="74" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1280.680@0.0.1280.680" timestamp="1598780230960" />
-    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1598778786141">
+    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1599359037318">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1598778786141" />
+    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1599359037318" />
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="PythonConfigurationType">
+        <watch expression="orgdatas_new['datas'][1]" language="Python" />
+        <watch expression="orgdatas['datas']" language="Python" />
+        <watch expression="[col for col in intro_table]" language="Python" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Tianyancha_Crawler$proxy.coverage" NAME="proxy Coverage Results" MODIFIED="1598602712590" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Python_Crawler_Tianyancha_master$.coverage" NAME="天眼查爬虫 Coverage Results" MODIFIED="1598531069317" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Tianyancha_Crawler$.coverage" NAME="天眼查爬虫 Coverage Results" MODIFIED="1598780387479" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Tianyancha_Crawler$.coverage" NAME="天眼查爬虫 Coverage Results" MODIFIED="1600942177511" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
