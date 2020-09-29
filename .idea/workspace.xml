@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eadf1312-4ff6-4eea-9acf-b3a15fe0b4ee" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/crawler.py" beforeDir="false" afterPath="$PROJECT_DIR$/crawler.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -129,7 +128,7 @@
       <workItem from="1599968420478" duration="4194000" />
       <workItem from="1600936010439" duration="10973000" />
       <workItem from="1600996091591" duration="3015000" />
-      <workItem from="1601371960106" duration="630000" />
+      <workItem from="1601371960106" duration="791000" />
     </task>
     <task id="LOCAL-00001" summary="增加了针对不同公司信息模板的爬取逻辑">
       <created>1598598441628</created>
@@ -201,7 +200,14 @@
       <option name="project" value="LOCAL" />
       <updated>1600944417175</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="增加产品爬">
+      <created>1601372611846</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1601372611846</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -218,7 +224,8 @@
     <MESSAGE value="fix little bug" />
     <MESSAGE value="增加产品爬取功能" />
     <MESSAGE value="补充说明书" />
-    <option name="LAST_COMMIT_MESSAGE" value="补充说明书" />
+    <MESSAGE value="增加产品爬" />
+    <option name="LAST_COMMIT_MESSAGE" value="增加产品爬" />
   </component>
   <component name="WindowStateProjectService">
     <state x="371" y="87" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1600942173624">
@@ -229,6 +236,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="429" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1600944414985" />
+    <state x="93" y="93" width="1095" height="495" key="DiffContextDialog" timestamp="1601372751925">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="93" y="93" width="1095" height="495" key="DiffContextDialog/0.0.1280.680@0.0.1280.680" timestamp="1601372751925" />
     <state x="421" y="82" key="FileChooserDialogImpl" timestamp="1598530442964">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -261,10 +272,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="142" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1600939364943" />
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1600944423799">
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1601372692203">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1600944423799" />
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1601372692203" />
     <state width="634" height="348" key="XDebugger.FullValuePopup" timestamp="1600941889272">
       <screen x="0" y="0" width="1280" height="680" />
     </state>

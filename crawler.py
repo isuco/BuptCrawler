@@ -48,7 +48,7 @@ def getPerName(text):
 #     return com_detail_info
 
 def ProcessProduct(tag):
-    #供应商、竞品、业务信息、产品、客户爬
+    #供应商、竞品、业务信息爬
     com_product_info = []
     headers=[]
     intro_headers = tag.select('.data-content thead')[0].select('th')
@@ -161,7 +161,6 @@ def getComByName(com_name):
         com_services_info=[]
         com_producers_info=[]
         com_opponents_info=[]
-        com_product_info=[]
         for datagroup in infoblocks:
             if 'tyc-event-ch' in datagroup.attrs:
                 #有些公司会在信息块名后加上hk,或是其他后缀
@@ -173,22 +172,19 @@ def getComByName(com_name):
                 #     com_relative_per=dict(com_relative_per,**ProcessAdminiStratorDataGroup(datagroup))
                 # elif datagroup['tyc-event-ch'] == 'CompangyDetail.zhuyaorenyuan':
                 #     com_relative_per=dict(com_relative_per,**ProcessMainMemberDataGroup(datagroup))
-                # if 'CompangyDetail.qiyeyewu' in datagroup['tyc-event-ch']:
-                #     com_services_info+=ProcessProduct(datagroup)
-                # elif 'CompangyDetail.jingpinxinxi' in datagroup['tyc-event-ch']:
-                #     com_opponents_info+=ProcessProduct(datagroup)
-                # elif 'CompangyDetail.gongyingshang' in datagroup['tyc-event-ch']:
-                #     com_producers_info+=ProcessProduct(datagroup)
-                # elif 'CompangyDetail.gongyingshang' in datagroup['tyc-event-ch']:
-                #     com_guests_info+=ProcessProduct(datagroup)
-                if 'CompangyDetail.chanpin' in datagroup['tyc-event-ch']:
-                    com_product_info+=ProcessProduct(datagroup)
+                if 'CompangyDetail.qiyeyewu' in datagroup['tyc-event-ch']:
+                    com_services_info+=ProcessProduct(datagroup)
+                elif 'CompangyDetail.jingpinxinxi' in datagroup['tyc-event-ch']:
+                    com_opponents_info+=ProcessProduct(datagroup)
+                elif 'CompangyDetail.gongyingshang' in datagroup['tyc-event-ch']:
+                    com_producers_info+=ProcessProduct(datagroup)
+                elif 'CompangyDetail.gongyingshang' in datagroup['tyc-event-ch']:
+                    com_guests_info+=ProcessProduct(datagroup)
 
         com_detail_info['guests']=com_guests_info
         com_detail_info['producers']=com_producers_info
         com_detail_info['opponents']=com_opponents_info
         com_detail_info['services']=com_services_info
-        com_detail_info['products']=com_product_info
         # process_dict = {}
         # for key in com_detail_info.keys():
         #     if "统一社会信用代码" in key:
