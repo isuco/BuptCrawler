@@ -232,14 +232,14 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="371" y="87" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680@0.0.1280.680" timestamp="1600942173624" />
-    <state x="429" y="0" key="CommitChangelistDialog2" timestamp="1601372758723">
+    <state x="429" y="0" key="CommitChangelistDialog2" timestamp="1601372790940">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="429" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1601372758723" />
-    <state x="93" y="93" width="1095" height="495" key="DiffContextDialog" timestamp="1601372751925">
+    <state x="429" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1601372790940" />
+    <state x="93" y="93" width="1095" height="495" key="DiffContextDialog" timestamp="1601372867591">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="93" y="93" width="1095" height="495" key="DiffContextDialog/0.0.1280.680@0.0.1280.680" timestamp="1601372751925" />
+    <state x="93" y="93" width="1095" height="495" key="DiffContextDialog/0.0.1280.680@0.0.1280.680" timestamp="1601372867591" />
     <state x="421" y="82" key="FileChooserDialogImpl" timestamp="1598530442964">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -272,10 +272,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="142" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1600939364943" />
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1601372692203">
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1601372796190">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1601372692203" />
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1601372796190" />
     <state width="634" height="348" key="XDebugger.FullValuePopup" timestamp="1600941889272">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -292,6 +292,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="279" y="74" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1280.680@0.0.1280.680" timestamp="1598780230960" />
+    <state x="331" y="132" key="git4idea.merge.GitPullDialog" timestamp="1601372820277">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="331" y="132" key="git4idea.merge.GitPullDialog/0.0.1280.680@0.0.1280.680" timestamp="1601372820277" />
     <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1599359037318">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
